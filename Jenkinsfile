@@ -17,21 +17,9 @@ pipeline {
             }
         }
 
-        stage ('Build image') {
+        stage ('Run app') {
             steps {
-                sh 'docker build . -t account'
-            }
-        }
-        stage ('Run container') {
-            steps {
-                sh 'docker run --name account -p 8585:8585 account'
-            }
-        }
-
-        stage ('Stop container') {
-            steps {
-                sh 'docker stop account'
-                sh 'docker rm account'
+                sh 'mvn spring-boot:run'
             }
         }
     }
