@@ -46,5 +46,4 @@ curl -H "Content-Type: application/json" -X POST -d '{"amount":15000}' http://lo
 * [Code Coverage] Jacoco ```build/reports/jacoco/test/html/index.html```
 
 
-###### Who do I talk to? 
-George Otieno <georgeorti@gmail.com> :email:
+docker build .
