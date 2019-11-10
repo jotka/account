@@ -11,7 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>account</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
+
     <name>account</name>
     <description>Demo project for Learn DevOps</description>
 
@@ -90,6 +91,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>account</finalName>
     </build>
 
 </project>
