@@ -108,7 +108,7 @@ public class DepositControllerTests extends BaseControllerTests {
         given(this.transactionsService.findByDateBetweenAndType(AccountUtils.getStartOfDay(new Date()),
                 AccountUtils.getEndOfDay(new Date()), TransactionType.DEPOSIT.getId())).willReturn(list);
         given(this.transactionsService.save(transaction)).willReturn(transaction);
-        given(this.accountService.findOne(1L)).willReturn(new Account(50000));
+        given(this.accountService.findById(1L).get()).willReturn(new Account(50000));
         
         when(this.transactionsService.save(any(AccountTransaction.class))).thenReturn(transaction);
         when(this.accountService.save(any(Account.class))).thenReturn(new Account(50000));

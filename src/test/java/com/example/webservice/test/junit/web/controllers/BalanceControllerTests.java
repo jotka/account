@@ -28,7 +28,7 @@ public class BalanceControllerTests extends BaseControllerTests {
     
     @Test
     public void testGetBalance() throws Exception {
-        given(this.accountService.findOne(1L))
+        given(this.accountService.findById(1L).get())
                 .willReturn(new Account(400));
         this.mvc.perform(get("/balance/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(content().json("{\"success\":true,\"messages\":{},\"errors\":{},\"data\":{\"balance\":\"$400.0\"},\"httpResponseCode\":200}"));

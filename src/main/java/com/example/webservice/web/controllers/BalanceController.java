@@ -27,7 +27,7 @@ public class BalanceController extends BaseController {
         HashMap<String, Object> responseData = new HashMap<>();
         
         try {
-            Account account = accountService.findOne(ACCOUNT_ID);
+            Account account = accountService.findById(ACCOUNT_ID).get();
             
             if (account != null) {
                 responseData.put("balance", "$"+ account.getAmount());

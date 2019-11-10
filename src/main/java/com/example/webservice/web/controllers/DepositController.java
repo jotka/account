@@ -2,6 +2,7 @@ package com.example.webservice.web.controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -65,10 +66,10 @@ public class DepositController extends BaseController {
                 AccountTransaction accountTransaction = new AccountTransaction(TransactionType.DEPOSIT.getId(), userTransaction.getAmount(), new Date());
                 double amount  = transactionsService.save(accountTransaction).getAmount();
                 
-                Account account = accountService.findOne(ACCOUNT_ID);
-                double newBalance = account.getAmount() + amount;
-                account.setAmount(newBalance);
-                accountService.save(account);
+                Optional<Account> account = accountService.findById(ACCOUNT_ID);
+                double newBalance = account.get().getAmount() + amount;
+                account.get().setAmount(newBalance);
+                accountService.save(account.get());
                 
                 jsonResponse.setSuccess(true, "", "Deposit sucessfully Transacted");
                 jsonResponse.setHttpResponseCode(HttpStatus.SC_OK);

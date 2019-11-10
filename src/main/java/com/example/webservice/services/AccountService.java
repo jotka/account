@@ -11,7 +11,4 @@ import com.example.webservice.domain.Account;
  */
 @Repository
 public interface AccountService extends CrudRepository<Account, Long>{
-    
-    Account findOne(Long id);
-
 }

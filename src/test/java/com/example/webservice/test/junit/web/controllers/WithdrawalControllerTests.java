@@ -40,7 +40,7 @@ public class WithdrawalControllerTests extends BaseControllerTests {
     	Gson gson = new Gson();
         String json = gson.toJson(userTransaction);
         
-        given(this.accountService.findOne(1L)).willReturn(new Account(40000));
+        given(this.accountService.findById(1L).get()).willReturn(new Account(40000));
         
         this.mvc.perform(post("/withdrawal/").contentType(MediaType.APPLICATION_JSON).content(json))
                 .andExpect(status().isOk()).andExpect(content().json("{\"success\":false,\"messages\":{\"message\":\"You have insufficient funds\",\"title\":\"Error\"},\"errors\":{},\"data\":{},\"httpResponseCode\":406}"));
@@ -61,7 +61,7 @@ public class WithdrawalControllerTests extends BaseControllerTests {
     	Gson gson = new Gson();
         String json = gson.toJson(userTransaction);
         
-        given(this.accountService.findOne(1L)).willReturn(new Account(400000));
+        given(this.accountService.findById(1L).get()).willReturn(new Account(400000));
         
         given(this.transactionsService.findByDateBetweenAndType(AccountUtils.getStartOfDay(new Date()),
                 AccountUtils.getEndOfDay(new Date()), TransactionType.WITHDRAWAL.getId())).willReturn(list);
@@ -85,7 +85,7 @@ public class WithdrawalControllerTests extends BaseControllerTests {
     	Gson gson = new Gson();
         String json = gson.toJson(userTransaction);
         
-        given(this.accountService.findOne(1L)).willReturn(new Account(400000));
+        given(this.accountService.findById(1L).get()).willReturn(new Account(400000));
         
         given(this.transactionsService.findByDateBetweenAndType(AccountUtils.getStartOfDay(new Date()),
                 AccountUtils.getEndOfDay(new Date()), TransactionType.WITHDRAWAL.getId())).willReturn(list);
@@ -111,7 +111,7 @@ public class WithdrawalControllerTests extends BaseControllerTests {
     	Gson gson = new Gson();
         String json = gson.toJson(userTransaction);
         
-        given(this.accountService.findOne(1L)).willReturn(new Account(400000));
+        given(this.accountService.findById(1L).get()).willReturn(new Account(400000));
         
         given(this.transactionsService.findByDateBetweenAndType(AccountUtils.getStartOfDay(new Date()),
                 AccountUtils.getEndOfDay(new Date()), TransactionType.WITHDRAWAL.getId())).willReturn(list);
@@ -135,7 +135,7 @@ public class WithdrawalControllerTests extends BaseControllerTests {
     	Gson gson = new Gson();
         String json = gson.toJson(userTransaction);
         
-        given(this.accountService.findOne(1L)).willReturn(new Account(70000));  
+        given(this.accountService.findById(1L).get()).willReturn(new Account(70000));
         
         given(this.transactionsService.findByDateBetweenAndType(AccountUtils.getStartOfDay(new Date()),
                 AccountUtils.getEndOfDay(new Date()), TransactionType.WITHDRAWAL.getId())).willReturn(list);
