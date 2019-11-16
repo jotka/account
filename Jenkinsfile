@@ -16,6 +16,11 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage ('Performance graphs') {
+            steps {
+                perfReport filterRegex: '', sourceDataFiles: '**/*.jtl'
+            }
+        }
 
 
     }
