@@ -18,7 +18,7 @@ pipeline {
         }
         stage ('Performance graphs') {
             steps {
-                perfReport filterRegex: '', sourceDataFiles: '**/*.jtl'
+                perfReport filterRegex: '', sourceDataFiles: '**/*.csv'
             }
         }
 
