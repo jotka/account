@@ -18,7 +18,7 @@ pipeline {
         }
         stage ('Performance graphs') {
             steps {
-                perfReport filterRegex: '', sourceDataFiles: '**/*.csv'
+                perfReport compareBuildPrevious: true, filterRegex: '', sourceDataFiles: '**/*.csv'
             }
         }
 
